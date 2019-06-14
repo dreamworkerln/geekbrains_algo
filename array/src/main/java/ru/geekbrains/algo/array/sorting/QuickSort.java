@@ -63,7 +63,9 @@ public class QuickSort<E extends Object & Comparable<? super E>> implements BiCo
     }
 
     @Override
-    public void accept(E[] es, Integer integer) {
+    public void accept(E[] data, Integer size) {
+
+        sort(data, 0, size -1);
 
     }
 }
