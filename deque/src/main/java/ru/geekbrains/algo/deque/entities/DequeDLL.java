@@ -11,7 +11,6 @@ import java.util.Iterator;
  * @param <E>
  */
 public class DequeDLL<E> implements Deque<E>  {
-// https://pikabu.ru/story/ukrop_425685
 
     Node<E> head = null;
     Node<E> tail= null;
@@ -200,11 +199,12 @@ public class DequeDLL<E> implements Deque<E>  {
 
             @Override
             public boolean hasNext() {
-                return node.next != null;
+                return node != null;
             }
 
             @Override
             public E next() {
+
                 E result = node.getData();
                 node = node.next;
                 return result;
@@ -223,7 +223,7 @@ public class DequeDLL<E> implements Deque<E>  {
 
             @Override
             public boolean hasNext() {
-                return node.previous != null;
+                return node != null;
             }
 
             @Override
