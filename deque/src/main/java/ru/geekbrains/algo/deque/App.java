@@ -7,8 +7,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Deque;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Hello world!
@@ -35,6 +34,8 @@ public class App
     void invertText() {
 
         try{
+
+            Collection<?> collection = new ArrayList<>();
 
             Deque<Character> deq = new DequeDLL<>();
 

@@ -193,7 +193,7 @@ public class DequeDLL<E> implements Deque<E>  {
     @Override
     public Iterator<E> iterator() {
 
-        Iterator<E> it = new Iterator<E>() {
+        return new Iterator<E>() {
 
             private Node<E> node = head;
 
@@ -210,14 +210,12 @@ public class DequeDLL<E> implements Deque<E>  {
                 return result;
             }
         };
-
-        return it;
     }
 
     @Override
     public Iterator<E> descendingIterator() {
 
-        Iterator<E> it = new Iterator<E>() {
+        return new Iterator<E>() {
 
             private Node<E> node = tail;
 
@@ -233,8 +231,6 @@ public class DequeDLL<E> implements Deque<E>  {
                 return result;
             }
         };
-
-        return it;
     }
 
     // Требуется отладчику -------------------------------
