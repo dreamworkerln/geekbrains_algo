@@ -3,6 +3,9 @@ package ru.geekbrains.algo.array;
 import ru.geekbrains.algo.array.implementation.SortedArray;
 import ru.geekbrains.algo.array.sorting.*;
 
+import java.awt.*;
+import java.awt.geom.Point2D;
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -30,6 +33,12 @@ public class App
 
 
         SortedArray<Integer> array = new SortedArray<>();
+
+        SortedArray<BigDecimal> array2 = new SortedArray<>();
+
+        //SortedArray<User> array2 = new SortedArray<>();
+
+        //SortedArray<MyObject> array2 = new SortedArray<>();
 
         final Integer SIZE = (int)1e5;
 
