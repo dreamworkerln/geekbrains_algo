@@ -36,10 +36,14 @@ public class App
         tree.add(32);
         tree.add(55);
 
+        System.out.println("Balanced(hand made): " + tree.isBalanced());
+        System.out.println("Balanced(NOT hand made): " + tree.isBalanced(tree.getRoot()));
 
-//        tree.add(15);
-//        tree.add(5);
-//        tree.add(20);
+        tree = new TreeImpl<>();
+        
+        tree.add(15);
+        tree.add(5);
+        tree.add(20);
 
         System.out.println("Balanced(hand made): " + tree.isBalanced());
         System.out.println("Balanced(NOT hand made): " + tree.isBalanced(tree.getRoot()));
@@ -52,6 +56,8 @@ public class App
 
         int balancedCount = 0;
 
+
+        System.out.println();
 
         for (int i = 0; i < TREE_COUNT; i++) {
 
@@ -69,26 +75,7 @@ public class App
 
         }
 
-        System.out.println("Unbalanced: " + Math.round((1-(double)balancedCount/TREE_COUNT)*100) + "%");
-
-        
-
-
-
-
-
-
-
-
-        
-
-        //tree.display();
-
-        //tree.remove(25);
-
-        //tree.display();
-
-
+        System.out.println("Unbalanced: " + Math.round(((double)(TREE_COUNT-balancedCount)/TREE_COUNT)*100) + "%");
 
     }
 
