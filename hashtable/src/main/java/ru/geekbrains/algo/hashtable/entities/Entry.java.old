@@ -1,0 +1,16 @@
+package ru.geekbrains.algo.hashtable.entities;
+
+import java.util.function.Supplier;
+
+public interface Entry<K, V> extends Supplier<CellType> {
+
+        K getKey();
+
+        V getValue();
+
+        void setValue(V value);
+
+        default CellType get() {
+            return CellType.ENTRY;
+        }
+}
