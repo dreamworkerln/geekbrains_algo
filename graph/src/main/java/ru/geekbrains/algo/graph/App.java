@@ -48,7 +48,7 @@ public class App
 
         System.out.println("\n");
 
-        graph.findPath("Москва", "Москва");
+        graph.findPath("Москва", "Воронеж");
 
     }
 
