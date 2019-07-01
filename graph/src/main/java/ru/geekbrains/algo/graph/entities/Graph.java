@@ -1,5 +1,8 @@
 package ru.geekbrains.algo.graph.entities;
 
+import org.omg.CORBA.DynAnyPackage.Invalid;
+
+import java.security.InvalidParameterException;
 import java.util.*;
 
 public class Graph {
@@ -164,9 +167,36 @@ public class Graph {
         vertex.setVisited(true);
     }
 
-    public int[][] getAdjMat() {
-        return adjMat;
+    public void findPath(String from, String to) {
+
+        int start = indexOf(from);
+        int finish = indexOf(to);
+
+        if(start == -1 || finish == -1)
+            throw new InvalidParameterException("from, to");
+
+        RouteResult res = DijkstrasAlgorithm.dijkstra(adjMat, start, finish);
+
+        System.out.println("Route:");
+
+        List<Integer> path = res.getPath();
+        for (int i = 0; i < path.size(); i++) {
+
+            Vertex v = vertexList.get(path.get(i));
+            System.out.print(v.getLabel());
+
+            if (i < path.size() - 1) {
+                System.out.print(" -> ");
+            }
+
+        }
+
+        System.out.print(" : " + res.getLength());
+
+
+
     }
+
 
     /*
     public Stack<String> findShortPathViaBfs(String startLabel, String finishLabel) {

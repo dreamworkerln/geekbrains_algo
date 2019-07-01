@@ -3,9 +3,6 @@ package ru.geekbrains.algo.graph.entities;
 // A Java program for Dijkstra's single source shortest path algorithm.
 // The program is for adjacency matrix representation of the graph
 import java.lang.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 
 //https://www.geeksforgeeks.org/printing-paths-dijkstras-shortest-path-algorithm/
@@ -25,9 +22,8 @@ public class DijkstrasAlgorithm {
     // algorithm for a graph represented
     // using adjacency matrix
     // representation
-    public static RouteResult dijkstra(int[][] adjacencyMatrix,
+    public static void dijkstra(int[][] adjacencyMatrix,
                                  int startVertex, int endVertex) {
-
         int nVertices = adjacencyMatrix[0].length;
 
         // shortestDistances[i] will hold the
@@ -91,7 +87,7 @@ public class DijkstrasAlgorithm {
             // Update dist value of the
             // adjacent vertices of the
             // picked vertex.
-            for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
+            for (int vertexIndex = 0; vertexIndex < nVertices;vertexIndex++) {
 
                 int edgeDistance = adjacencyMatrix[nearestVertex][vertexIndex];
 
@@ -102,42 +98,44 @@ public class DijkstrasAlgorithm {
                     shortestDistances[vertexIndex] = shortestDistance + edgeDistance;
                 }
             }
-
-            if (added[endVertex])
-                break;
         }
 
-        return getSolution(startVertex, shortestDistances, parents, endVertex);
+        printSolution(startVertex, shortestDistances, parents);
     }
 
     // A utility function to print
     // the constructed distances
     // array and shortest paths
-    private static RouteResult getSolution(int startVertex,
-                                           int[] distances,
-                                           int[] parents,
-                                           int endVertex) {
-        //int nVertices = distances.length;
-        //System.out.print("Vertex\t Distance\tPath");
+    private static void printSolution(int startVertex,
+                                      int[] distances,
+                                      int[] parents) {
+        int nVertices = distances.length;
+        System.out.print("Vertex\t Distance\tPath");
 
-        List<Integer> path = new ArrayList<>();
-
-        //printPath(endVertex, parents);
-
-        int current = endVertex;
-        path.add(current);
-
-        while(current != NO_PARENT) {
-
-            current = parents[current];
-            if (current != NO_PARENT) {
-                path.add(current);
+        for (int vertexIndex = 0;
+             vertexIndex < nVertices;
+             vertexIndex++) {
+            if (vertexIndex != startVertex) {
+                System.out.print("\n" + startVertex + " -> ");
+                System.out.print(vertexIndex + " \t\t ");
+                System.out.print(distances[vertexIndex] + "\t\t");
+                printPath(vertexIndex, parents);
             }
         }
+    }
 
-        List<?> shallowCopy = path.subList(0, path.size());
-        Collections.reverse(shallowCopy);
+    // Function to print shortest path
+    // from source to currentVertex
+    // using parents array
+    private static void printPath(int currentVertex,
+                                  int[] parents) {
 
-        return new RouteResult(path, distances[endVertex]);
+        // Base case : Source node has
+        // been processed
+        if (currentVertex == NO_PARENT) {
+            return;
+        }
+        printPath(parents[currentVertex], parents);
+        System.out.print(currentVertex + " ");
     }
 }

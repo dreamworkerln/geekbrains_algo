@@ -46,7 +46,9 @@ public class App
 
         graph.display();
 
-        DijkstrasAlgorithm.dijkstra(graph.getAdjMat(), 0, 8);
+        System.out.println("\n");
+
+        graph.findPath("Москва", "Москва");
 
     }
 
